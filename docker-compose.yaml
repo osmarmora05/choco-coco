@@ -4,9 +4,8 @@ services:
     restart: unless-stopped
     image: ollama/ollama:0.22.1
     volumes:
-      volumes:
-        - ./run_ollama.sh:/run_ollama.sh:Z
-        - ./ollama:/root/.ollama:Z
+      - ./run_ollama.sh:/run_ollama.sh:Z
+      - ./ollama:/root/.ollama:Z
     env_file:
       - .env
     ports:
