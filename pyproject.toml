@@ -1,0 +1,15 @@
+[project]
+name = "choco-coco"
+version = "0.1.0"
+description = "A Pokémon expert system concept, powered by LLM and RAG (LLamaIndex)"
+requires-python = ">=3.14"
+
+[dependency-groups]
+dev = ["ruff>=0.15.12", "ty>=0.0.34"]
+
+[tool.uv.workspace]
+members = [
+  "libs/choco-coco-brain",
+  "libs/choco-coco-image-to-ascii",
+  "apps/api",
+]

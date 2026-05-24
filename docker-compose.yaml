@@ -1,0 +1,37 @@
+services:
+  ollama:
+    container_name: choco-coco-brain
+    restart: unless-stopped
+    image: ollama/ollama:0.22.1
+    volumes:
+      volumes:
+        - ./run_ollama.sh:/run_ollama.sh:Z
+        - ./ollama:/root/.ollama:Z
+    env_file:
+      - .env
+    ports:
+      - "${OLLAMA_PORT}:${OLLAMA_PORT}"
+    entrypoint: ["/bin/bash", "/run_ollama.sh"]
+
+    networks:
+      - ollama_network
+
+  choco-coco-api:
+    container_name: choco-coco-api
+    build:
+      context: .
+      dockerfile: ./apps/api/Dockerfile
+      args:
+        - API_PORT=${API_PORT}
+    depends_on:
+      - ollama
+    env_file:
+      - .env
+    networks:
+      - ollama_network
+    ports:
+      - "${API_PORT}:${API_PORT}"
+
+networks:
+  ollama_network:
+    driver: bridge
