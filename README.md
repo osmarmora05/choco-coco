@@ -24,6 +24,5 @@ Final project for the "Fundamentos de Sistemas Expertos" class.
 3. Run ollama and API
 
 ```sh
-  chmod +x ./run_ollama.sh
   docker compose up
 ```
