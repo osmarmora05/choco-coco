@@ -8,6 +8,9 @@ services:
       - ./ollama:/root/.ollama:Z
     env_file:
       - .env
+    environment:
+      - OLLAMA_LLM_MODEL=${OLLAMA_LLM_MODEL}
+      - EMBEDDER_MODEL=${EMBEDDER_MODEL}
     ports:
       - "${OLLAMA_PORT}:${OLLAMA_PORT}"
 
@@ -21,8 +24,8 @@ services:
           sleep 1
         done
 
-        ollama pull qwen2.5:3b-instruct
-        ollama pull embeddinggemma:300m
+        ollama pull "$OLLAMA_LLM_MODEL"
+        ollama pull "$EMBEDDER_MODEL"
 
         wait
 
