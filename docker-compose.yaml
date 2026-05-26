@@ -10,7 +10,21 @@ services:
       - .env
     ports:
       - "${OLLAMA_PORT}:${OLLAMA_PORT}"
-    entrypoint: ["/bin/bash", "/run_ollama.sh"]
+
+    entrypoint:
+      - /bin/bash
+      - -c
+      - |
+        ollama serve &
+
+        until ollama list > /dev/null 2>&1; do
+          sleep 1
+        done
+
+        ollama pull qwen2.5:3b-instruct
+        ollama pull embeddinggemma:300m
+
+        wait
 
     networks:
       - ollama_network
