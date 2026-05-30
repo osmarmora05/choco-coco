@@ -48,6 +48,21 @@ services:
     ports:
       - "${API_PORT}:${API_PORT}"
 
+  zrok2:
+    image: openziti/zrok:v2__0_zrok2
+    user: "root"
+    volumes:
+      - ${HOME_DIRECTORY}/.zrok2:/home/ziggy/.zrok2:Z
+    env_file:
+      - .env
+    networks:
+      - ollama_network
+    environment:
+      - PFXLOG_NO_JSON=true
+      - API_PORT=${API_PORT}
+      - HOME_DIRECTORY=${HOME_DIRECTORY}
+    command: share public http://choco-coco-api:${API_PORT} --headless
+
 networks:
   ollama_network:
     driver: bridge

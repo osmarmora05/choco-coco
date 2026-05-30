@@ -21,7 +21,7 @@ Final project for the "Fundamentos de Sistemas Expertos" class.
   cat .env.example > .env
 ```
 
-3. Run ollama and API
+3. Run ollama, API, and tunnel (optional).
 
 ```sh
   docker compose up
