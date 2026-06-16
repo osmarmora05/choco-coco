@@ -13,10 +13,12 @@ fn image_to_ascii(path_image: String, width: u32, height: u32) -> PyResult<Strin
 
     let ascii = AsciiBuilder::new(file)
         .dimensions(width, height)
-        .colorize(true)
-        .style(Style::FgPaint)
+        // .colorize(true)
+        // .style(Style::FgPaint)
         .make_ascii()
         .map_err(|e| PyRuntimeError::new_err(e.to_string()))?;
+
+    println!("{}", &ascii);
 
     Ok(ascii)
 }

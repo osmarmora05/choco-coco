@@ -1,6 +1,7 @@
-from devtools import debug
+import re
 from typing import Optional
 
+from devtools import debug
 from pydantic import BaseModel
 from robyn import SubRouter
 
@@ -23,14 +24,14 @@ class ChatMessageResponse(BaseModel):
 async def create_message(request: ChatMessage) -> ChatMessageResponse:
     [response, pokemon_property] = await query_chat(request.content)
 
+    content_str = re.sub(r"^assistant:\s*", "", str(response.response))
+
     if pokemon_property is not None:
         debug(
-            ChatMessageResponse(
-                content=str(response.response), properties=pokemon_property
-            )
+            ChatMessageResponse(content=str(content_str), properties=pokemon_property)
         )
         return ChatMessageResponse(
-            content=str(response.response), properties=pokemon_property
+            content=str(content_str), properties=pokemon_property
         )
 
     debug(ChatMessageResponse(content=str(response.response), properties=None))
