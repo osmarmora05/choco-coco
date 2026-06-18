@@ -34,5 +34,5 @@ async def create_message(request: ChatMessage) -> ChatMessageResponse:
             content=str(content_str), properties=pokemon_property
         )
 
-    debug(ChatMessageResponse(content=str(response.response), properties=None))
-    return ChatMessageResponse(content=str(response.response), properties=None)
+    debug(ChatMessageResponse(content=str(content_str), properties=None))
+    return ChatMessageResponse(content=str(content_str), properties=None)
