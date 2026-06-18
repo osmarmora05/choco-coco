@@ -1,0 +1,8 @@
+Para ejecutar la presentación:
+
+- https://mfontanini.github.io/presenterm/
+
+---
+- uv (python)
+- nvim
+- firefox (opcional)
