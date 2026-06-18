@@ -11,6 +11,7 @@ def photo_pokemon_to_ascci(name_pokemon: str) -> str | None:
 
     try:
         ascci_pokemon = image_to_ascii(str(photo_path), 30, 30)
+        ascci_pokemon = image_to_ascii(str(photo_path), 40, 40)
         return ascci_pokemon
     except Exception:
         return None
