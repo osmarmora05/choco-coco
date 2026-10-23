@@ -4,7 +4,7 @@ A Pokémon expert system concept, powered by LLM and RAG (LLamaIndex).
 
 Final project for the "Fundamentos de Sistemas Expertos" class.
 
-See the [docs](./slides/choco-coco/coquito.md).
+See the [docs](./slides/choco-coco/conquito.md).
 
 ![showcase](./slides/choco-coco/assets/img/showcase.png)
 
